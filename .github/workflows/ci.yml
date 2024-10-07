@@ -30,3 +30,7 @@ jobs:
       with:
         name: jacoco-report
         path: target/site/jacoco/
+        if-no-files-found: error
+
+    - name: List contents of target directory
+      run: ls -R target
