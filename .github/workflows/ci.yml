@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,3 +45,19 @@ jobs:
         message: 'Update JaCoCo badge'
         add: '.github/badges/*.svg'
         push: true
+
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn clean verify sonar:sonar -Dsonar.token=$SONAR_TOKEN -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=romteix -Dsonar.projectKey=Romteix_pipeline
+      env:
+        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
