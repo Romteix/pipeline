@@ -29,6 +29,7 @@ class HelloControllerTest {
     }
     
     
+    //test de la méthode getHome
     @Test
     void testGetHome() throws Exception {
         MvcResult result = mockMvc.perform(get("/"))
