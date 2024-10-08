@@ -78,7 +78,7 @@ jobs:
             cache: maven
         
         - name: Build with Maven
-          run: mvn c-B package --file pom.xml
+          run: mvn -B package --file pom.xml
         
         - name: Set up Docker Buildx
           run: docker/setup-buildx-action@v3
