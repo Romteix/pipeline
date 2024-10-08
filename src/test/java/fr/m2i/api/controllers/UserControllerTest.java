@@ -24,7 +24,7 @@ public class UserControllerTest {
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/romy"))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 		String resultStr = result.getResponse().getContentAsString();
-		assertEquals("Ok", resultStr);
+		assertEquals("OK", resultStr);
 	}
 
 	@Test
